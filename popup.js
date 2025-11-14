@@ -1,25 +1,23 @@
-const btn = document.getElementById("toggle");
+const btn = document.getElementById("toggleBtn");
 
 // Load saved state
 chrome.storage.sync.get("darkMode", (data) => {
-  let enabled = data.darkMode || false;
-  updateButton(enabled);
+    let enabled = data.darkMode === true;
+    updateButton(enabled);
+}); 
+// updated to avoid edge cases with data type -- > More precise and safer
 
   btn.onclick = () => {
     enabled = !enabled;
     chrome.storage.sync.set({ darkMode: enabled });
-
-    if (enabled) {
-      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        chrome.tabs.sendMessage(tabs[0].id, { action: "enable" });
-      });
-    } else {
-      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        chrome.tabs.sendMessage(tabs[0].id, { action: "disable" });
-      });
-    }
-
     updateButton(enabled);
+
+    // Send message to active tab
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        chrome.tabs.sendMessage(tabs[0].id, {
+            action: enabled ? "enable" : "disable"
+        });
+    });
   };
 });
 
