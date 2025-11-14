@@ -3,12 +3,12 @@ html, body {
     color: #eee !important;
 }
 
-img, video {
-    opacity: 0.8;
+*:not(img):not(video):not(svg) {
+    background-color: #111 !important;
+    color: #eee !important;
+    border-color: #444 !important;
 }
 
-* {
-    background-color: transparent !important;
-    border-color: #444 !important;
-    color: #eee !important;
+a {
+    color: #80a0ff !important;
 }
