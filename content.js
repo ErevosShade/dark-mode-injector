@@ -24,8 +24,8 @@ chrome.storage.sync.get("darkMode", (data) => {
 
 // Listen for messages from popup
 chrome.runtime.onMessage.addListener((msg) => {
-  if (msg.action === "enable") enableDarkMode();
-  if (msg.action === "disable") disableDarkMode();
+  if (msg.action === "enable") injectCSS();
+  if (msg.action === "disable") removeCSS();
 });
 // --------------
 // Updated code cuz earlier one doesnt not directly inject / remove css but 
