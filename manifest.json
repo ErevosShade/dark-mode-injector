@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Dark Mode Injector",
+  "version": "1.0",
+  "description": "Force dark mode on any website with one click.",
+  "permissions": ["storage", "scripting", "activeTab"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}
