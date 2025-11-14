@@ -1,0 +1,14 @@
+html, body {
+    background: #111 !important;
+    color: #eee !important;
+}
+
+img, video {
+    opacity: 0.8;
+}
+
+* {
+    background-color: transparent !important;
+    border-color: #444 !important;
+    color: #eee !important;
+}
